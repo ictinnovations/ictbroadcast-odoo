@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <!-- Extend the res.users form view -->
+        <record id="view_users_form_inherit_ictbroadcast" model="ir.ui.view">
+            <field name="name">res.users.form.inherit.ictbroadcast</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <!-- Add the fields under the "Preferences" page -->
+                <xpath expr="//group[1]" position="replace">
+                    <group>
+                        <field name="ictbroadcast_url"/>
+                        <field name="ictbroadcast_access_key"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+

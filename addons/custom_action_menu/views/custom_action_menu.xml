@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <!-- Add Custom Action -->
+        <record id="action_custom_action_menu" model="ir.actions.server">
+        <field name="name">Custom Action</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+	    <field name="binding_model_id" ref="base.model_res_partner"/>
+	    <field name="binding_type">action</field>
+        <field name="state">code</field>
+	    <field name="code">
+                action = {
+                    'type': 'ir.actions.act_window',
+                    'name': 'Custom Action',
+                    'view_mode': 'form',
+                    'res_model': 'custom.action.wizard',
+		    'target': 'new',
+		    'context': {'default_contact_ids': env.context.get('active_ids', [])}
+                }
+            </field>
+        </record>
+
+
+        <!-- Custom Action Wizard Form View -->
+        <record id="custom_action_wizard_form" model="ir.ui.view">
+            <field name="name">custom.action.wizard.form</field>
+            <field name="model">custom.action.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <!-- Dropdown to select campaign -->
+			    <field name="campaign_id"/>
+			    <field name="contact_ids" widget="many2many_tags" readonly="1"/>
+                        </group>
+                        <footer>
+                            <button string="Confirm" type="object" class="btn-primary" name="confirm_action"/>
+                            <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+
