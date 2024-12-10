@@ -1,0 +1,14 @@
+{
+    'name': 'Custom Disposition',
+    'version': '1.0',
+    'depends': ['base'],
+    'license': 'LGPL-3',
+    'data': [
+        'security/ir.model.access.csv',
+        'views/custom_disposition_view.xml',
+    ],
+    'installable': True,  # Ensure this is set to True
+    'application': True,  # If you want it to appear in the app menu
+}
+
+
