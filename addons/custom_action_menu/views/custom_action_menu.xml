@@ -2,11 +2,11 @@
     <data>
         <!-- Add Custom Action -->
         <record id="action_custom_action_menu" model="ir.actions.server">
-        <field name="name">Export into ICTBroadcast Campaign</field>
-        <field name="model_id" ref="base.model_res_partner"/>
+            <field name="name">Export into ICTBroadcast Campaign</field>
+            <field name="model_id" ref="base.model_res_partner"/>
 	    <field name="binding_model_id" ref="base.model_res_partner"/>
-	    <field name="binding_type">action</field>
-        <field name="state">code</field>
+   	    <field name="binding_type">action</field>
+            <field name="state">code</field>
 	    <field name="code">
                 action = {
                     'type': 'ir.actions.act_window',
