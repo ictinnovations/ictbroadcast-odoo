@@ -99,6 +99,9 @@ class CustomActionMenu(models.Model):
             _logger.error("No campaign selected.")
             return
 
+        success_contacts = []  # List to track successfully exported contacts
+        failed_contacts = []  # List to track failed contacts
+    
         # Iterate over each selected contact
         for contact in self.contact_ids:
             # Prepare the contact data
@@ -161,6 +164,7 @@ class CustomActionMenu(models.Model):
                         campaign_id,
                         response_data
                     )
+                    success_contacts.append(contact.name)  # Track successful contact
                 else:
                     _logger.error(
                         'Failed to add contact %s (%s) to Campaign %s: %s',
@@ -169,6 +173,7 @@ class CustomActionMenu(models.Model):
                         campaign_id,
                         response.text
                     )
+                    failed_contacts.append(contact.name)  # Track failed contact
             except Exception as e:
                 _logger.exception(
                     'Error adding contact %s (%s) to Campaign %s: %s',
@@ -177,12 +182,32 @@ class CustomActionMenu(models.Model):
                     campaign_id,
                     str(e)
                 )
+                failed_contacts.append(contact.name)  # Track failed contact
 
-        # Reload the page after processing
+        # Prepare success message
+        message = f"{', '.join(success_contacts)} exported to Campaign {campaign_id} successfully."
+
+        # Optionally, include failed contacts in the message
+        if failed_contacts:
+            message += f"\nFailed to export: {', '.join(failed_contacts)}."
+
+        # Display the notification message
         return {
             'type': 'ir.actions.client',
-            'tag': 'reload',
+            'tag': 'display_notification',
+            'params': {
+                'title': 'Export Status',
+                'message': message,
+                'type': 'success' if not failed_contacts else 'warning',  # Success if no failures, else warning
+                'sticky': False,  # Disappear automatically
+            },
+        }, {
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.partner',
+            'view_mode': 'list',
+            'target': 'current',
         }
+
 
     @api.model
     def custom_action_function(self):
