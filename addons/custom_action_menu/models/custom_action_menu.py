@@ -203,4 +203,3 @@ class CustomActionMenu(models.Model):
             'res_model': 'custom.action.wizard',
             'target': 'new',
         }
-
