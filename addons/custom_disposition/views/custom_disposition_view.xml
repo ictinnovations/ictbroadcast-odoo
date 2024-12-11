@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
             <list string="Disposition">
                 <field name="name"/>
-                <field name="description"/>
+		<field name="description"/>
             </list>
         </field>
     </record>
@@ -22,7 +22,18 @@
                     <group>
                         <field name="name"/>
                         <field name="description"/>
-                    </group>
+		    </group>
+		    <notebook>
+                        <page string="Contacts">
+                            <field name="contact_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

@@ -12,6 +12,8 @@ class CustomDisposition(models.Model):
 
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
+    contact_ids = fields.One2many('res.partner', 'disposition_id', string='Contacts')  # Assuming res.partner is the contact model
+    note = fields.Text(string='Note')
 
     @api.model
     def export_to_ictbroadcast(self):
