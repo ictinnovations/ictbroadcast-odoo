@@ -4,7 +4,7 @@
         <field name="name">custom.disposition.view.tree</field>
 	    <field name="model">custom.disposition</field>
 	    <field name="priority">1</field>
-        <field name="arch" type="xml">
+            <field name="arch" type="xml">
             <list string="Disposition">
                 <field name="name"/>
                 <field name="description"/>
@@ -37,6 +37,19 @@
     <menuitem id="custom_disposition_root_menu" name="Disposition"/>
     <menuitem id="custom_disposition_sub_menu" parent="custom_disposition_root_menu" name="Custom Disposition"/>
     <menuitem id="custom_disposition_profile_menu" action="action_custom_disposition" parent="custom_disposition_sub_menu" name="Dispositions"/>
+
+    <!-- Custom Server Action -->
+    <record id="custom_disposition_action_menu" model="ir.actions.server">
+        <field name="name">Export to ICTBroadcast</field>
+        <field name="model_id" ref="model_custom_disposition"/>
+        <field name="binding_model_id" ref="model_custom_disposition"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.export_to_ictbroadcast()
+        </field>
+    </record>
+
 </odoo>
 
 

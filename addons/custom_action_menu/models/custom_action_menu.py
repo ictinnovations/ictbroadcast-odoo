@@ -24,34 +24,16 @@ class CustomActionMenu(models.Model):
         readonly=True
     )
 
-    def get_broadcast_credentials(self):
-        """Fetch ICTBroadcast credentials from the current user."""
-        # Access the current user
-        current_user = self.env.user
-
-        # Retrieve the ICTBroadcast URL and Access Key from the current user's fields
-        service_url = current_user.ictbroadcast_url
-        api_token = current_user.ictbroadcast_access_key
-
-        if not service_url or not api_token:
-            _logger.error('ICTBroadcast URL or Access Key is not set for the current user.')
-            return None, None
-
-        # Ensure the service URL ends with a slash
-        if not service_url.endswith('/'):
-            service_url += '/'
-
-        _logger.error('url and token is  %s: %s', service_url, api_token)
-        return service_url, api_token
-
     @api.model
     def get_campaigns(self):
         """Fetch campaigns from the external API and return them as a list of tuples."""
         # Get the ICTBroadcast credentials
-        service_url, api_token = self.get_broadcast_credentials()
+        service_url, api_token = self.env.user.get_broadcast_credentials()
         if not service_url or not api_token:
+            _logger.error('ICTBroadcast credentials are missing.')
             return []
 
+        _logger.info('Service URL: %s, API Token: %s', service_url, api_token)
         # Complete service URL for Campaign List Mode
         campaign_list_url = f'{service_url}rest/Campaign_List_Mode'
 
@@ -86,10 +68,12 @@ class CustomActionMenu(models.Model):
     def confirm_action(self):
         """Handle the confirm button click and load contacts into the campaign."""
         # Get the ICTBroadcast credentials
-        service_url, api_token = self.get_broadcast_credentials()
+        service_url, api_token = self.env.user.get_broadcast_credentials()
         if not service_url or not api_token:
+            _logger.error('ICTBroadcast credentials are missing.')
             return
 
+        _logger.info('Service URL: %s, API Token: %s', service_url, api_token)
         # Complete service URL for Campaign Contact Create
         contact_create_url = f'{service_url}rest/Campaign_Contact_Create'
 

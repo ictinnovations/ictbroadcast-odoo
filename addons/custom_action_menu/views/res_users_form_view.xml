@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <!-- Add the fields under the "Preferences" page -->
                 <xpath expr="//group[1]" position="replace">
-                    <group>
+                    <group string="ICTBroadcast Settings">
                         <field name="ictbroadcast_url"/>
                         <field name="ictbroadcast_access_key"/>
                     </group>
