@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_contact_report_list" model="ir.ui.view">
+        <field name="name">contact.report.list</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <list string="Contact Report">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="call_status"/>
+                <field name="call_response"/>
+                <field name="destination_name"/>
+                <field name="call_amount"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_contact_report_form" model="ir.ui.view">
+        <field name="name">contact.report.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Contact Report">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="call_status"/>
+                        <field name="call_response"/>
+                        <field name="destination_name"/>
+                        <field name="call_amount"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

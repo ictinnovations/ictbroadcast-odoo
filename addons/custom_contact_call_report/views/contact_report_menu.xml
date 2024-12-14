@@ -1,0 +1,13 @@
+<odoo>
+    <menuitem id="menu_contact_report" 
+              name="Contact Report" 
+              parent="contacts.menu_contacts"
+              action="action_contact_report"/>
+    
+    <record id="action_contact_report" model="ir.actions.act_window">
+        <field name="name">Contact Report</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_contact_report_list"/>
+    </record>
+</odoo>
