@@ -109,7 +109,8 @@ class CustomActionMenu(models.Model):
                 'campaign_id': campaign_id,
                 'schedule_time': '',
                 'expiry': '',
-                'remote': remote_data
+                'remote': remote_data,
+                'do_not_call': int(contact.do_not_call)
             }
 
             # Log the payload for debugging
@@ -121,7 +122,8 @@ class CustomActionMenu(models.Model):
                 'campaign_id': str(campaign_id),
                 'schedule_time': '',
                 'expiry': '',
-                'remote': json.dumps(remote_data)
+                'remote': json.dumps(remote_data),
+                'do_not_call': int(contact.do_not_call)
             }
 
             # Construct the full URL with query parameters

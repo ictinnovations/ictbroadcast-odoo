@@ -11,5 +11,5 @@ class ResPartner(models.Model):
 
     call_response = fields.Char(string="Call Response")
     destination_name = fields.Char(string="Destination Name")
-    call_amount = fields.Float(string="Amount")
+    call_amount = fields.Float(string="Call Duration")
 

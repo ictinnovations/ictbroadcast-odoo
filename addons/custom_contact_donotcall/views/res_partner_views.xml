@@ -1,0 +1,27 @@
+<odoo>
+    <!-- Form View Inheritance -->
+    <record id="view_contacts_form_custom_dnc" model="ir.ui.view">
+        <field name="name">view.contacts.form.custom.dnc</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add 'do_not_call' field after 'phone' field -->
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="do_not_call" placeholder="Do Not Call" string="Do Not Call"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Tree View Inheritance -->
+    <record id="view_contacts_tree_custom_dnc" model="ir.ui.view">
+        <field name="name">view.contacts.tree.custom.dnc</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add 'do_not_call' field after 'name' field in tree view -->
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="do_not_call" string="Do Not Call"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
