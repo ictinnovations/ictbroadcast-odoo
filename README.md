@@ -1,2 +1,4 @@
-# ictbroadcast-odoo
-odoo integrated with ICTBroadcast
+Odoo, the leading open-source ERP and CRM platform, is now integrated with ICTBroadcast, an advanced AI-powered auto dialer and call center software. This integration allows users to make and receive calls within Odoo, export leads, contacts, and reports to ICTBroadcast, and run automated campaigns efficiently. Disposition results from campaigns are synced back to Odoo, keeping lead and contact reports updated for real-time tracking and smarter decision-making.
+Together, Odoo and ICTBroadcast provide a unified communication workflow that enhances productivity and customer engagement.
+
+ICTBroadcast is a unified communications AI-powered call center software with auto dialing functionality. It featuresVoice, SMS, Fax and Email communications also it supports different types of telemarketing and broadcasting campaigns, fulfilling the requirements of multiple business scenarios. It is an all one software solution based on open-source asterisk communications switch. It features multiple dialing modes such as progressive dialing, predictive dialing, power dialing, and preview dialing as well as manual dialing through WebRTC web phones to improve your AI powered call center’s efficiency and productivity.
